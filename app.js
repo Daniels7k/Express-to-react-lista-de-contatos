@@ -10,9 +10,9 @@ app.use(cors())
 //BodyParser
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
-//Rotas
 
-//CRUD
+
+//Rotas
 
 app.get("/contatos", async (req, res) => {
     //Buscando dados
@@ -49,13 +49,17 @@ app.post("/contatos", async (req, res) => {
 
 })
 
-app.put("/contatos/:id", (req, res) => {
-    res.send("UPDATE")
+app.post("/contatos/update/:id", async (req, res) => {
+    const dados = await Contatos.find({
+        where: {id: req.params.id}
+    })
+
+    console.log(dados)
 })
 
 
 app.get("/contatos/delete/:id", async (req, res) => {
-     await Contatos.destroy({ where: { id: req.params.id } })
+    await Contatos.destroy({ where: { id: req.params.id } })
     res.status(201).redirect("http://localhost:3000/")
 })
 
