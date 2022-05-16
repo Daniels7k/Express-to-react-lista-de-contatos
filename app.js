@@ -41,26 +41,27 @@ app.post("/contatos", async (req, res) => {
             numero: req.body.numero
         })
 
-        res.status(201).redirect("https://daniels7k.github.io/React-Lista-de-Contatos/")
+        res.status(201).end()
+
     } catch (error) {
         console.log(error)
-        res.status(400)
+        res.status(400).end()
     }
 
 })
 
-app.post("/contatos/update/:id", async (req, res) => {
-    const dados = await Contatos.find({
-        where: {id: req.params.id}
-    })
+// app.post("/contatos/update/:id", async (req, res) => {
+//     const dados = await Contatos.find({
+//         where: {id: req.params.id}
+//     })
 
-    console.log(dados)
-})
+//     console.log(dados)
+// })
 
 
 app.get("/contatos/delete/:id", async (req, res) => {
     await Contatos.destroy({ where: { id: req.params.id } })
-    res.status(201).redirect("https://daniels7k.github.io/React-Lista-de-Contatos/")
+    res.status(201).end()
 })
 
 
