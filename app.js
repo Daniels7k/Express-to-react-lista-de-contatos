@@ -41,7 +41,7 @@ app.post("/contatos", async (req, res) => {
             numero: req.body.numero
         })
 
-        res.status(201).end()
+        res.status(201).redirect("https://daniels7k.github.io/React-Lista-de-Contatos/")
 
     } catch (error) {
         console.log(error)
@@ -61,7 +61,7 @@ app.post("/contatos", async (req, res) => {
 
 app.get("/contatos/delete/:id", async (req, res) => {
     await Contatos.destroy({ where: { id: req.params.id } })
-    res.status(201).end()
+    res.status(201).redirect("https://daniels7k.github.io/React-Lista-de-Contatos/")
 })
 
 
