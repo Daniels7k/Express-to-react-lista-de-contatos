@@ -1,12 +1,19 @@
 const MySql = require("./mySql")
 
-const Contatos = MySql.sequilize.define("contatos", {
+const Contatos = MySql.sequelize.define("contatos", {
     nome:{
-        type: MySql.Sequilize.STRING
+        type: MySql.Sequelize.STRING
     },
     numero: {
-        type: MySql.Sequilize.STRING
+        type: MySql.Sequelize.STRING
     }
 }) 
+ 
+//Criando tabela
+ async function sync () {
+    await Contatos.sync();
+ } 
+
+ sync()
 
 module.exports = Contatos
